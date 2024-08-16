@@ -2,17 +2,16 @@ import React from "react";
 import { useStore } from "../context/Context";
 import Camera from "../components/Camera";
 import Table from "../components/Table";
-import { useStream } from "../context/StreamContext";
+
 const headings = ["Time", "Activity", "Camera"];
 const Stream = () => {
-  const { urls } = useStream();
   const { display, media } = useStore();
   const gridStyle = {
     1: "col-md-12",
     2: "col-md-6",
     3: "col-md-4",
   };
-
+  console.log("re-rendering...");
   return (
     <>
       <div className="row g-3 cameraCardsWrapper">
