@@ -16,18 +16,18 @@ const Camera = ({ stream, cameraId }) => {
     3: "190px",
   };
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setCount(count + 1);
-    }, 5000);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setCount(count + 1);
+  //   }, 5000);
 
-    return () => clearTimeout(timer);
-  }, [count]);
-  useEffect(() => {
-    if (count > 0) {
-      setIsRed((prev) => !prev);
-    }
-  }, [count]);
+  //   return () => clearTimeout(timer);
+  // }, [count]);
+  // useEffect(() => {
+  //   if (count > 0) {
+  //     setIsRed((prev) => !prev);
+  //   }
+  // }, [count]);
 
   return (
     <div

@@ -2,9 +2,9 @@ import React from "react";
 import { useStream } from "../context/StreamContext";
 const Table = ({ headings }) => {
   const { data } = useStream();
-  console.log(data);
+  // console.log(data);
 
-  const detections = data.filter((data) => data.response !== null);
+  // const detections = data.filter((data) => data.response !== null);
   return (
     <div className=" activityTable rounded h-100 shadow">
       <table className="table rounded-md table-borderless text-uppercase h-100">
@@ -21,29 +21,16 @@ const Table = ({ headings }) => {
           </tr>
         </thead>
         <tbody className="position-relative">
-          {detections.length > 0 ? (
-            detections.reverse().map((data, index) => (
+          {Object.keys(data).length > 0 ? (
+            Object.entries(data).map(([socketName, response], index) => (
               <tr key={index} className="border-b">
                 <td
                   className={`bg-transparent ${
-                    data.response === null ? "text-white" : "text-danger"
+                    response === null ? "text-white" : "text-danger"
                   }`}
+                  style={{ fontSize: "10px" }}
                 >
-                  {data.date}
-                </td>
-                <td
-                  className={`bg-transparent ${
-                    data.response === null ? "text-white" : "text-danger"
-                  }`}
-                >
-                  {data.response}
-                </td>
-                <td
-                  className={`bg-transparent ${
-                    data.response === null ? "text-white" : "text-danger"
-                  }`}
-                >
-                  {data.camera}
+                  {`${socketName}: ${response}`}
                 </td>
               </tr>
             ))
