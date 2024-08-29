@@ -28,7 +28,17 @@ const Stream = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [index, setIndex] = useState(0);
   const [currentData, setCurrentData] = useState(guardActivity);
+  const data = [
+    ...wastTime,
+    ...peopleCount,
+    ...guardActivity,
+    ...employeeAvailibility,
+    ...emptyWorkstation,
+    ...convData,
+    ...clothAbusing,
+  ];
 
+  console.log("Data is ", data, " length is ", data.length);
   const media = [
     {
       media: gaurdAvail,
@@ -59,7 +69,7 @@ const Stream = () => {
       logs: wastTime,
     },
   ];
-  const videosPerPage = display === 1 ? 1 : 2;
+  const videosPerPage = display === 1 ? 1 : 4;
   const totalPages = Math.ceil(media.length / videosPerPage);
 
   const indexOfLastVideo = currentPage * videosPerPage;
@@ -98,7 +108,7 @@ const Stream = () => {
           currentVideos.map((stream, index) => (
             <div
               key={`${currentPage}-${index}`} // Ensure unique key per page
-              className={`h-100 ${gridStyle[display]} ${
+              className={`h-50 ${gridStyle[display]} ${
                 display === 1 ? "h-100" : ""
               } ${display === 1 ? "h-96" : ""}`}
             >
@@ -141,7 +151,7 @@ const Stream = () => {
       </div>
 
       <div className="row g-0 mt-2 activityTableOuter">
-        <Table headings={headings} data={currentData} />
+        <Table headings={headings} data={data} />
       </div>
     </>
   );
