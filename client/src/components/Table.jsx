@@ -25,8 +25,10 @@ const Table = ({ headings, data = [], display }) => {
           const randomIndex = Math.floor(Math.random() * data.length);
           // Get the data at the random index
           const randomData = data[randomIndex];
-          // Update displayed data
-          setDisplayedData((prevData) => [...prevData, randomData]);
+          if (randomData) { // Check if randomData is defined
+            // Update displayed data
+            setDisplayedData((prevData) => [...prevData, randomData]);
+          }
         }
       }, 1000);
 
@@ -52,14 +54,16 @@ const Table = ({ headings, data = [], display }) => {
         <tbody className="position-relative">
           {displayedData.length > 0 ? (
             displayedData.reverse().map((item, index) => (
-              <tr key={index} className="border-b color-white text-center">
-                <td className="bg-transparent text-white w-25">{item.date}</td>
-                <td className="bg-transparent text-white w-25">{item.day}</td>
-                <td className="bg-transparent text-white w-25">{item.time}</td>
-                <td className="bg-transparent text-white w-25">
-                  {item.activity}
-                </td>
-              </tr>
+              item ? ( // Ensure item is defined before accessing properties
+                <tr key={index} className="border-b color-white text-center">
+                  <td className="bg-transparent text-white w-25">{item.date || 'N/A'}</td>
+                  <td className="bg-transparent text-white w-25">{item.day || 'N/A'}</td>
+                  <td className="bg-transparent text-white w-25">{item.time || 'N/A'}</td>
+                  <td className="bg-transparent text-white w-25">
+                    {item.activity || 'N/A'}
+                  </td>
+                </tr>
+              ) : null
             ))
           ) : (
             <tr>
