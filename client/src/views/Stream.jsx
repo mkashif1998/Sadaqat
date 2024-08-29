@@ -101,6 +101,7 @@ const Stream = () => {
   }, [index]);
 
   console.log("currentData is", currentData, "index is ", index);
+  const tableData = display === 1 ? currentData : data;
   return (
     <>
       <div className="row g-3 cameraCardsWrapper">
@@ -151,7 +152,7 @@ const Stream = () => {
       </div>
 
       <div className="row g-0 mt-2 activityTableOuter">
-        <Table headings={headings} data={data} />
+        <Table headings={headings} data={tableData} display={display} />
       </div>
     </>
   );

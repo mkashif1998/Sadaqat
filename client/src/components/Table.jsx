@@ -1,22 +1,38 @@
 import React, { useState, useEffect } from "react";
 
-const Table = ({ headings, data = [] }) => {
+const Table = ({ headings, data = [], display }) => {
   const [displayedData, setDisplayedData] = useState([]);
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      if (data.length > 0) {
-        // Generate a random index
-        const randomIndex = Math.floor(Math.random() * data.length);
-        // Get the data at the random index
-        const randomData = data[randomIndex];
-        // Update displayed data
-        setDisplayedData((prevData) => [...prevData, randomData]);
-      }
-    }, 1000);
+    if (display === 1) {
+      // Show data one by one with a 2-second interval
+      let index = 0;
+      const intervalId = setInterval(() => {
+        if (index < data.length) {
+          setDisplayedData((prevData) => [...prevData, data[index]]);
+          index++;
+        } else {
+          index = 0; // Reset index to loop through data again
+        }
+      }, 2000);
 
-    return () => clearInterval(intervalId); // Clear the interval on component unmount
-  }, [data]);
+      return () => clearInterval(intervalId); // Clear interval on component unmount
+    } else if (display === 2) {
+      // Show random data every second
+      const intervalId = setInterval(() => {
+        if (data.length > 0) {
+          // Generate a random index
+          const randomIndex = Math.floor(Math.random() * data.length);
+          // Get the data at the random index
+          const randomData = data[randomIndex];
+          // Update displayed data
+          setDisplayedData((prevData) => [...prevData, randomData]);
+        }
+      }, 1000);
+
+      return () => clearInterval(intervalId); // Clear interval on component unmount
+    }
+  }, [data, display]);
 
   return (
     <div className="activityTable rounded h-100 shadow">
