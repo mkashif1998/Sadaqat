@@ -4,19 +4,16 @@ const Table = ({ headings, data = [] }) => {
   const [displayedData, setDisplayedData] = useState([]);
 
   useEffect(() => {
-    let index = 0;
-
     const intervalId = setInterval(() => {
-      if (index < data?.length) {
-        setDisplayedData((prevData) => [...prevData, data[index]]);
-        index++;
-        if (index === data?.length - 1) {
-          index = 0;
-        }
-      } else {
-        clearInterval(intervalId);
+      if (data.length > 0) {
+        // Generate a random index
+        const randomIndex = Math.floor(Math.random() * data.length);
+        // Get the data at the random index
+        const randomData = data[randomIndex];
+        // Update displayed data
+        setDisplayedData((prevData) => [...prevData, randomData]);
       }
-    }, 2000);
+    }, 1000);
 
     return () => clearInterval(intervalId); // Clear the interval on component unmount
   }, [data]);
