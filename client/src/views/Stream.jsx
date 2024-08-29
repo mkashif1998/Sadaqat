@@ -3,7 +3,7 @@ import { useStore } from "../context/Context";
 import Camera from "../components/Camera";
 import Table from "../components/Table";
 import {
-  activityLog,
+  wastingTime as wastTime,
   peopleCount,
   guardActivity,
   employeeAvailibility,
@@ -29,15 +29,6 @@ const Stream = () => {
   const [index, setIndex] = useState(0);
   const [currentData, setCurrentData] = useState(guardActivity);
 
-  // const media = [
-  //   gaurdAvail,
-  //   employeAval,
-  //   inOutfit,
-  //   conversation,
-  //   emptyStation,
-  //   count,
-  //   wastingTime,
-  // ];
   const media = [
     {
       media: gaurdAvail,
@@ -65,7 +56,7 @@ const Stream = () => {
     },
     {
       media: wastingTime,
-      logs: wastingTime,
+      logs: wastTime,
     },
   ];
   const videosPerPage = display === 1 ? 1 : 2;
@@ -99,7 +90,7 @@ const Stream = () => {
     setCurrentData(media[index].logs);
   }, [index]);
 
-  console.log(currentData);
+  console.log("currentData is", currentData, "index is ", index);
   return (
     <>
       <div className="row g-3 cameraCardsWrapper">
