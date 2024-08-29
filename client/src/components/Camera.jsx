@@ -5,29 +5,17 @@ import { EyeOff, Minimize2 } from "lucide-react";
 // import mp4 from "../assets/videos/stream.mp4";
 import SimpleIconWrapper from "./SimpleIconWrapper";
 
-const Camera = ({ stream, cameraId }) => {
+const Camera = ({ src, cameraId }) => {
   const [count, setCount] = useState(0);
   const [isRed, setIsRed] = useState(false);
 
-  const { display, media } = useStore();
+  const { display } = useStore();
   const heights = {
     1: "95%",
     2: "192px",
     3: "190px",
   };
-
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     setCount(count + 1);
-  //   }, 5000);
-
-  //   return () => clearTimeout(timer);
-  // }, [count]);
-  // useEffect(() => {
-  //   if (count > 0) {
-  //     setIsRed((prev) => !prev);
-  //   }
-  // }, [count]);
+ 
 
   return (
     <div
@@ -58,16 +46,15 @@ const Camera = ({ stream, cameraId }) => {
 
         <video
           autoPlay
+          loop
+          muted
           playsInline
           width={610}
           height={480}
-          ref={(video) => {
-            if (video) {
-              video.srcObject = stream;
-            }
-          }}
           controls
-        ></video>
+        >
+          <source src={src} type="video/mp4" />
+        </video>
       </div>
     </div>
   );

@@ -18,7 +18,7 @@ const SearchBar = () => {
         className="d-flex bgMain  text-white cursor-pointer py-2 px-3 rounded align-items-center"
         onClick={publishStream}
       >
-        Publish Stream
+        Publish
       </div>
     </div>
   );
