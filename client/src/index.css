@@ -258,7 +258,7 @@ body {
 } */
 .cameraCardsWrapper {
   height: 60vh;
-  overflow-y: auto;
+  overflow-y: hidden;
 }
 tbody {
   display: block;
@@ -294,7 +294,7 @@ thead {
   height: 81vh;
 }
 .mainScreenLy {
-  height: 88vh;
+  height: 85vh;
   overflow-x: hidden;
   overflow-y: auto;
 }

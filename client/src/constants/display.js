@@ -13,10 +13,4 @@ export const viewStyle = [
     activeSvg: <LayoutGrid fill="#00fffb" />,
     isActive: false,
   },
-  {
-    label: "4xGrid",
-    icon: <Grid3X3 />,
-    activeSvg: <Grid3X3 fill="#00fffb" />,
-    isActive: false,
-  },
 ];

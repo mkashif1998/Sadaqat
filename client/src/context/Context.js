@@ -13,7 +13,7 @@ export const AppContextProvider = ({ children }) => {
   const [lists, setLists] = useState(viewStyle);
 
   const [rtsp, setRtsp] = useState("");
-  const [media, setMedia] = useState([]);
+  const [media, setMedia] = useState(Array.from({ length: 4 }));
 
   useEffect(() => {
     const socketCon = io("http://36.50.13.22:5000"); // Use 'http://' or 'https://'
